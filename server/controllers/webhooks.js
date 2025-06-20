@@ -8,7 +8,7 @@ export const clerkWebhooks = async (req, res) => {
   try {
     const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
 
-    const payload = req.body; // raw Buffer
+    const payload = JSON.parse(req.body); // raw Buffer
     const headers = {
       "svix-id": req.headers["svix-id"],
       "svix-timestamp": req.headers["svix-timestamp"],
