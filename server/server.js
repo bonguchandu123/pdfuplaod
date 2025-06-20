@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 // Clerk Webhook — MUST use raw body
-app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
+app.post('/clerk',express.json(),clerkWebhooks)
 
 const PORT = process.env.PORT || 5000
 
