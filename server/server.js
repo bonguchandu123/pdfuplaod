@@ -10,16 +10,19 @@ connectDB()
 
 app.use(cors())
 
+// Optional: body parser for other routes
+app.use(express.json())
 
-app.get('/',(req,res) => {
-    res.send("Api working ")
+// Health check route
+app.get('/', (req, res) => {
+  res.send("API working")
 })
 
-app.post('/clerk', express.json(),clerkWebhooks)
+// Clerk Webhook — MUST use raw body
+app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
 
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT,() => {
-    console.log(`server is runing on port ${PORT}`)
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`)
 })
-
