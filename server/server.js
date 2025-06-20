@@ -9,7 +9,7 @@ const app = express();
 connectDB();
 
 // ✅ Clerk webhook route FIRST with raw body
-app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks);
+app.post('/clerk', express.json(), clerkWebhooks);
 
 // ✅ Then normal body parsers
 app.use(cors());
