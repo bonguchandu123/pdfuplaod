@@ -1,28 +1,25 @@
-import express from "express"
-import cors from 'cors'
-import 'dotenv/config'
-import { connectDB } from "./config/db.js"
-import { clerkWebhooks } from "./controllers/webhooks.js"
+import express from "express";
+import cors from "cors";
+import 'dotenv/config';
+import { connectDB } from "./config/db.js";
+import { clerkWebhooks } from "./controllers/webhooks.js";
 
-const app = express()
+const app = express();
 
-connectDB()
+connectDB();
 
-app.use(cors())
+// ✅ Clerk webhook route FIRST with raw body
+app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks);
 
-// Optional: body parser for other routes
-app.use(express.json())
+// ✅ Then normal body parsers
+app.use(cors());
+app.use(express.json());
 
-// Health check route
 app.get('/', (req, res) => {
-  res.send("API working")
-})
+  res.send("API working");
+});
 
-// Clerk Webhook — MUST use raw body
-app.post('/clerk',express.json(),clerkWebhooks)
-
-const PORT = process.env.PORT || 5000
-
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});
