@@ -1,0 +1,67 @@
+/* index.css */
+
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set base font and background */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Anchor tag default styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* List styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Images should not exceed their container */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Input and button resets */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Container helper class */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
