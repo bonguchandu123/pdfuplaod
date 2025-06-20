@@ -8,7 +8,7 @@ dotenv.config();
 
 export const clerkWebhooks = async (req, res) => {
   try {
-    const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
+    const wh = new Webhook("whsec_xLYCW0wrXt6qwoUt8FwFM8+XKakXd0Po");
 
     const evt = wh.verify(req.body, {
       "svix-id": req.headers["svix-id"],

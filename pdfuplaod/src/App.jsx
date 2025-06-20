@@ -1,11 +1,24 @@
 import React from 'react'
+import {
+  SignedIn,
+  SignedOut,
+  SignIn,
+  SignOutButton
+} from '@clerk/clerk-react'
 
 const App = () => {
   return (
-    <div>
-      chandu
-      
-    </div>
+    <>
+      <SignedIn>
+        <h1>✅ You are signed in</h1>
+        <SignOutButton />
+      </SignedIn>
+
+      <SignedOut>
+        <h1>❌ You are signed out</h1>
+        <SignIn />
+      </SignedOut>
+    </>
   )
 }
 
