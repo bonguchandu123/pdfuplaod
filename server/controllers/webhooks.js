@@ -19,18 +19,21 @@ export const clerkWebhooks = async (req, res) => {
     const { data, type } = evt;
 
     switch (type) {
-      case "user.created": {
-        const userData = {
-          _id: data.id,
-          email: data.email_addresses[0].email_address,
-          name: `${data.first_name} ${data.last_name}`,
-          imageUrl: data.image_url,
-          branch: "unknown",
-          year: "1st",
-        };
-        await User.create(userData);
-        break;
-      }
+     case "user.created": {
+  const email = data.email_addresses[0].email_address;
+  const userData = {
+    _id: data.id,
+    email,
+    name: `${data.first_name} ${data.last_name}`.trim(),
+    imageUrl: data.image_url,
+    branch: "unknown",
+    year: "1st",
+    isAdmin: email === "satyavathibongu49.com", // you = admin
+  };
+  await User.create(userData);
+  break;
+}
+
 
       case "user.updated": {
         const userData = {
